@@ -12,6 +12,14 @@ class Hashmap {
     }
     return hashCode;
   }
+  set(key, value) {}
+  get(key) {}
+  has(key) {}
+  remove(key) {}
+  length() {}
+  clear() {}
+  values() {}
+  entries() {}
 }
 
 let test = new Hashmap();
