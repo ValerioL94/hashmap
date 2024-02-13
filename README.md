@@ -1,0 +1,2 @@
+# hashmap
+Practicing with hashmaps
