@@ -30,7 +30,14 @@ class Hashmap {
       return this.buckets[index].find(key);
     }
   }
-  has(key) {}
+  has(key) {
+    let index = this.hash(key);
+    if (!this.buckets[index]) {
+      return false;
+    } else {
+      return this.buckets[index].contains(key);
+    }
+  }
   remove(key) {}
   length() {}
   clear() {}
