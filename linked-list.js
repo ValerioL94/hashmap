@@ -125,22 +125,22 @@ export default class LinkedList {
       }
     }
   }
-  removeAt(index) {
-    if (index < 0 || index >= this.size()) return null;
-    else {
-      if (index === 0) {
-        this.headNode = this.headNode.nextNode;
-      } else {
-        let previous;
-        let current = this.headNode;
-        let n = 0;
-        while (n < index) {
-          previous = current;
-          current = current.nextNode;
-          n++;
+  delete(key) {
+    if (Object.keys(this.headNode.value) == key) {
+      this.headNode = this.headNode.nextNode;
+      return true;
+    } else {
+      let previous;
+      let current = this.headNode;
+      while (current.nextNode) {
+        previous = current;
+        current = current.nextNode;
+        if (Object.keys(current.value) == key) {
+          previous.nextNode = current.nextNode;
+          return true;
         }
-        previous.nextNode = current.nextNode;
       }
+      return false;
     }
   }
 }
