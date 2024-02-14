@@ -27,7 +27,7 @@ class Hashmap {
     if (!this.buckets[index]) {
       return null;
     } else {
-      return this.buckets[index];
+      return this.buckets[index].find(key);
     }
   }
   has(key) {}
@@ -39,12 +39,13 @@ class Hashmap {
 }
 
 let map = new Hashmap();
-map.set('Carlos', 'Blue eyes');
+map.set('Carlos', 'blue eyes');
 map.set('Diana', 'blonde hair');
 map.set('Sara', 'math teacher');
-map.set('Daniel', '44');
+map.set('Daniel', '44yo');
+map.set('Carla', 'black belt');
 // console.dir(map.buckets, { depth: null });
-console.dir(map.get('Daniel'), { depth: null });
+console.log(map.get('Daniel'));
 
 // if (index < 0 || index >= buckets.length) {
 //   throw new Error('Trying to access index out of bound');
