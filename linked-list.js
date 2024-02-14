@@ -63,16 +63,19 @@ export default class LinkedList {
     if (current === this.headNode) this.headNode = null;
     else previous.nextNode = null;
   }
-  contains(value) {
+  contains(key) {
     if (!this.headNode) return null;
-    else if (this.headNode.value === value) return true;
-    else {
+    else if (Object.keys(this.headNode.value) == key) {
+      return true;
+    } else {
       let current = this.headNode;
       while (current.nextNode) {
         current = current.nextNode;
-        if (current.value === value) return true;
+        if (Object.keys(current.value) == key) {
+          return true;
+        }
+        return false;
       }
-      return false;
     }
   }
   find(key) {
