@@ -75,18 +75,18 @@ export default class LinkedList {
       return false;
     }
   }
-  find(value) {
+  find(key) {
     if (!this.headNode) return null;
-    else if (this.headNode.value === value) return 0;
-    else {
+    else if (Object.keys(this.headNode.value) == key) {
+      return this.headNode.value[key];
+    } else {
       let current = this.headNode;
-      let n = 0;
       while (current.nextNode) {
-        n++;
         current = current.nextNode;
-        if (current.value === value) return n;
+        if (Object.keys(current.value) == key) {
+          return current.value[key];
+        }
       }
-      return null;
     }
   }
   toString() {
