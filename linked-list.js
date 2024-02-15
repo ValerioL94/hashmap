@@ -1,13 +1,27 @@
 export default class LinkedList {
   constructor() {}
   append(value) {
-    if (!this.headNode) this.headNode = new Node(value);
-    else {
+    let node = new Node(value);
+    if (!this.headNode) this.headNode = node;
+    else if (Object.keys(this.headNode.value)[0] === Object.keys(value)[0]) {
+      if (!this.headNode.nextNode) {
+        this.headNode = node;
+      } else {
+        node.nextNode = this.headNode.nextNode;
+        this.headNode = node;
+      }
+    } else {
       let current = this.headNode;
       while (current.nextNode) {
+        let previous = current;
         current = current.nextNode;
+        if (Object.keys(current.value)[0] === Object.keys(value)[0]) {
+          previous.nextNode = node;
+          node.nextNode = current.nextNode;
+          return;
+        }
       }
-      current.nextNode = new Node(value);
+      current.nextNode = node;
     }
   }
   size() {
@@ -22,13 +36,13 @@ export default class LinkedList {
   }
   contains(key) {
     if (!this.headNode) return null;
-    else if (Object.keys(this.headNode.value) == key) {
+    else if (Object.keys(this.headNode.value)[0] === key) {
       return true;
     } else {
       let current = this.headNode;
       while (current.nextNode) {
         current = current.nextNode;
-        if (Object.keys(current.value) == key) {
+        if (Object.keys(current.value)[0] === key) {
           return true;
         }
         return false;
@@ -37,16 +51,17 @@ export default class LinkedList {
   }
   find(key) {
     if (!this.headNode) return null;
-    else if (Object.keys(this.headNode.value) == key) {
+    else if (Object.keys(this.headNode.value)[0] === key) {
       return this.headNode.value[key];
     } else {
       let current = this.headNode;
       while (current.nextNode) {
         current = current.nextNode;
-        if (Object.keys(current.value) == key) {
+        if (Object.keys(current.value)[0] === key) {
           return current.value[key];
         }
       }
+      return null;
     }
   }
   getKeys() {
@@ -78,6 +93,7 @@ export default class LinkedList {
         )}`,
       ],
     ];
+    console.log(entries);
     let current = this.headNode;
     while (current.nextNode) {
       current = current.nextNode;
@@ -87,20 +103,8 @@ export default class LinkedList {
     }
     return entries;
   }
-  toString() {
-    if (!this.headNode) return null;
-    else {
-      let current = this.headNode;
-      let print = `(${current.value}) -> `;
-      while (current.nextNode) {
-        current = current.nextNode;
-        print += `(${current.value}) -> `;
-      }
-      return (print += 'null');
-    }
-  }
   delete(key) {
-    if (Object.keys(this.headNode.value) == key) {
+    if (Object.keys(this.headNode.value)[0] === key) {
       this.headNode = this.headNode.nextNode;
       return true;
     } else {
@@ -109,7 +113,7 @@ export default class LinkedList {
       while (current.nextNode) {
         previous = current;
         current = current.nextNode;
-        if (Object.keys(current.value) == key) {
+        if (Object.keys(current.value)[0] === key) {
           previous.nextNode = current.nextNode;
           return true;
         }
