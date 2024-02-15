@@ -85,7 +85,9 @@ class Hashmap {
   values() {
     let list = [];
     this.buckets.forEach((el) => {
-      if (el !== undefined) list.push(el);
+      if (el !== undefined) {
+        list = list.concat(el.getValues());
+      }
     });
     return list;
   }
@@ -117,5 +119,5 @@ console.log(map.length());
 // map.clear();
 // console.log(map.buckets);
 console.log(map.keys());
-// console.log(map.values());
+console.log(map.values());
 // console.log(map.entries());
