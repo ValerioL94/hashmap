@@ -93,7 +93,6 @@ class Hashmap {
   }
   entries() {
     let list = [];
-    let print = [];
     this.buckets.forEach((el) => {
       if (el !== undefined) {
         list = list.concat(el.getEntries());
@@ -112,19 +111,18 @@ map.set('Carla', 'black belt');
 map.set('Diana', 'red hair');
 map.set('Daniel', '34yo');
 console.dir(map.buckets, { depth: null });
-// console.log(map.get('Daniel'));
-// console.log(map.has('Carla'));
-// console.log(map.remove('Diana'));
-// console.log(map.remove('Sara'));
-// console.log(map.remove('Daniel'));
-// console.dir(map.buckets, { depth: null });
-// map.set('Diana', 'blonde hair');
-// map.set('Sara', 'math teacher');
-// map.set('Daniel', '44yo');
-// console.dir(map.buckets, { depth: null });
-// console.log(map.length());
+console.log(map.get('Daniel'));
+console.log(map.has('Carla'));
+console.log(map.remove('Diana'));
+console.log(map.remove('Sara'));
+console.log(map.remove('Daniel'));
+console.dir(map.buckets, { depth: null });
+map.set('Diana', 'blonde hair');
+map.set('Sara', 'math teacher');
+map.set('Daniel', '44yo');
+console.dir(map.buckets, { depth: null });
+console.log(map.length());
+console.log(map.keys());
+console.log(map.values());
+console.log(map.entries());
 // map.clear();
-// console.log(map.buckets);
-// console.log(map.keys());
-// console.log(map.values());
-// console.log(map.entries());

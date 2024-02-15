@@ -93,7 +93,6 @@ export default class LinkedList {
         )}`,
       ],
     ];
-    console.log(entries);
     let current = this.headNode;
     while (current.nextNode) {
       current = current.nextNode;
