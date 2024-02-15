@@ -63,7 +63,13 @@ class Hashmap {
       }
     }
   }
-  length() {}
+  length() {
+    let total = 0;
+    this.buckets.forEach((el) => {
+      total += el.size();
+    });
+    return total;
+  }
   clear() {}
   values() {}
   entries() {}
@@ -77,7 +83,11 @@ map.set('Daniel', '44yo');
 map.set('Carla', 'black belt');
 // console.dir(map.buckets, { depth: null });
 // console.log(map.get('Daniel'));
-// console.log(map.remove('Diana'), map.remove('Daniel'));
+console.log(map.remove('Diana'));
 console.log(map.remove('Sara'));
+console.log(map.remove('Daniel'));
 // console.dir(map.buckets, { depth: null });
+map.set('Diana', 'blonde hair');
+map.set('Sara', 'math teacher');
+map.set('Daniel', '44yo');
 console.log(map.length());
