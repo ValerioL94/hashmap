@@ -70,7 +70,9 @@ class Hashmap {
     });
     return total;
   }
-  clear() {}
+  clear() {
+    this.buckets = new Array(this.capacity);
+  }
   values() {}
   entries() {}
 }
@@ -91,3 +93,5 @@ map.set('Diana', 'blonde hair');
 map.set('Sara', 'math teacher');
 map.set('Daniel', '44yo');
 console.log(map.length());
+map.clear();
+console.log(map.buckets);
