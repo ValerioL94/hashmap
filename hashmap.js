@@ -73,8 +73,29 @@ class Hashmap {
   clear() {
     this.buckets = new Array(this.capacity);
   }
-  values() {}
-  entries() {}
+  keys() {
+    let list = [];
+    this.buckets.forEach((el) => {
+      if (el !== undefined) {
+        list = list.concat(el.getKeys());
+      }
+    });
+    return list;
+  }
+  values() {
+    let list = [];
+    this.buckets.forEach((el) => {
+      if (el !== undefined) list.push(el);
+    });
+    return list;
+  }
+  entries() {
+    let list = [];
+    this.buckets.forEach((el) => {
+      if (el !== undefined) list.push(el);
+    });
+    return list;
+  }
 }
 
 let map = new Hashmap();
@@ -93,5 +114,8 @@ map.set('Diana', 'blonde hair');
 map.set('Sara', 'math teacher');
 map.set('Daniel', '44yo');
 console.log(map.length());
-map.clear();
-console.log(map.buckets);
+// map.clear();
+// console.log(map.buckets);
+console.log(map.keys());
+// console.log(map.values());
+// console.log(map.entries());
