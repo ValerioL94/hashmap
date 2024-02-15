@@ -71,13 +71,21 @@ export default class LinkedList {
   }
   getEntries() {
     if (!this.headNode) return null;
+    let entries = [
+      [
+        `${Object.keys(this.headNode.value)}, ${Object.values(
+          this.headNode.value
+        )}`,
+      ],
+    ];
     let current = this.headNode;
     while (current.nextNode) {
       current = current.nextNode;
-      if (Object.keys(current.value) == key) {
-        return current.value[key];
-      }
+      entries.push([
+        `${Object.keys(current.value)}, ${Object.values(current.value)}`,
+      ]);
     }
+    return entries;
   }
   toString() {
     if (!this.headNode) return null;
