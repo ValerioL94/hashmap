@@ -61,13 +61,13 @@ export default class LinkedList {
   }
   getValues() {
     if (!this.headNode) return null;
+    let values = Object.values(this.headNode.value);
     let current = this.headNode;
     while (current.nextNode) {
       current = current.nextNode;
-      if (Object.keys(current.value) == key) {
-        return current.value[key];
-      }
+      values = values.concat(Object.values(current.value));
     }
+    return values;
   }
   getEntries() {
     if (!this.headNode) return null;
