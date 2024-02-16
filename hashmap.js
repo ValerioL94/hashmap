@@ -1,7 +1,7 @@
 import LinkedList from './linked-list.js';
 class Hashmap {
-  constructor() {
-    this.capacity = 16;
+  constructor(capacity = 16) {
+    this.capacity = capacity;
     this.loadFactor = 0.75;
     this.buckets = new Array(this.capacity);
   }
@@ -14,6 +14,7 @@ class Hashmap {
     return hashCode;
   }
   set(key, value) {
+    if (this.length() >= this.capacity * this.loadFactor) this.grow();
     let index = this.hash(key);
     if (index < 0 || index >= this.capacity) {
       throw new Error('Trying to access index out of bound');
@@ -24,6 +25,17 @@ class Hashmap {
       this.buckets[index] = new LinkedList();
       this.buckets[index].append({ [key]: value });
     }
+  }
+  grow() {
+    const tempEntries = this.entries();
+    let tempMap = new Hashmap((this.capacity *= 2));
+    tempEntries.forEach((el) => {
+      let key, value;
+      [key, value] = el[0].split(',');
+      tempMap.set(key, value);
+    });
+    this.capacity = tempMap.capacity;
+    this.buckets = tempMap.buckets;
   }
   get(key) {
     let index = this.hash(key);
@@ -126,3 +138,13 @@ console.log(map.keys());
 console.log(map.values());
 console.log(map.entries());
 // map.clear();
+map.set('Gherman', 'hunter');
+map.set('Lauren', 'bookworm');
+map.set('Marcus', 'bodybuilder');
+map.set('Jane', 'kind friend');
+map.set('Alfred', 'town priest');
+map.set('Maria', 'sword master');
+map.set('Laurence', 'scholar');
+map.set('Maya', 'fortune teller');
+map.set('Jordan', 'team player');
+console.dir(map, { depth: null });
