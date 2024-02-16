@@ -1,5 +1,6 @@
 export default class LinkedList {
   constructor() {}
+  // append should be split in two functions: one to add new values and one to update them
   append(value) {
     let node = new Node(value);
     if (!this.headNode) this.headNode = node;
