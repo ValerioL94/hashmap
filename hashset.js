@@ -21,9 +21,9 @@ class Hashset {
     }
     if (!this.buckets[index]) {
       this.buckets[index] = new LinkedList();
-      this.buckets[index].append({ [key]: null });
+      this.buckets[index].append({ [key]: false });
     } else {
-      this.buckets[index].append({ [key]: null });
+      this.buckets[index].append({ [key]: false });
     }
   }
   grow() {
